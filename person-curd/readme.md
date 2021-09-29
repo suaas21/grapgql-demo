@@ -18,8 +18,12 @@ To run the program:
 
 ## Update
 
-`http://localhost:8080/person?query=mutation+_{updatePerson(id:2388,name:"sayf azad"){id,name,age}}`
+`http://localhost:8080/person?query=mutation+_{updatePerson(id:<id>,name:"sayf azad"){id,name,age}}`
 
 ## Delete
 
+<<<<<<< HEAD
 ` http://localhost:8080/person?query=mutation+_{deletePerson(id:2388){id,name,age}}`
+=======
+` http://localhost:8080/person?query=mutation+_{deletePerson(id:<id>){id,name,age}}`
+>>>>>>> add all
