@@ -35,14 +35,14 @@ var personType = graphql.NewObject(graphql.ObjectConfig{
 
 var queryType = graphql.NewObject(graphql.ObjectConfig{
 	Name:        "Query",
-	Description:  "query type",
-	Fields:      graphql.Fields{
+	Description: "query type",
+	Fields: graphql.Fields{
 		"person": &graphql.Field{
-			Type: personType,
+			Type:        personType,
 			Description: "get person by id",
-			Args:              graphql.FieldConfigArgument{
+			Args: graphql.FieldConfigArgument{
 				"id": &graphql.ArgumentConfig{
-					Type:         graphql.Int,
+					Type: graphql.Int,
 				},
 			},
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
@@ -59,7 +59,7 @@ var queryType = graphql.NewObject(graphql.ObjectConfig{
 		},
 		"allPersons": &graphql.Field{
 			Description: "get all persons",
-			Type: graphql.NewList(personType),
+			Type:        graphql.NewList(personType),
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 				return persons, nil
 			},
@@ -68,12 +68,12 @@ var queryType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 var mutationType = graphql.NewObject(graphql.ObjectConfig{
-	Name:        "Mutation",
-	Fields:      graphql.Fields{
+	Name: "Mutation",
+	Fields: graphql.Fields{
 		"createPerson": &graphql.Field{
-			Description:              "create new person",
-			Type:              personType,
-			Args:              graphql.FieldConfigArgument{
+			Description: "create new person",
+			Type:        personType,
+			Args: graphql.FieldConfigArgument{
 				"name": &graphql.ArgumentConfig{
 					Type: graphql.NewNonNull(graphql.String),
 				},
@@ -86,7 +86,7 @@ var mutationType = graphql.NewObject(graphql.ObjectConfig{
 				age, ageOk := p.Args["age"].(float64)
 				rand.Seed(time.Now().Unix())
 				person := Person{
-					ID:   rand.Intn(10000),
+					ID: rand.Intn(10000),
 				}
 				if nameOk {
 					person.Name = name
@@ -99,11 +99,11 @@ var mutationType = graphql.NewObject(graphql.ObjectConfig{
 			},
 		},
 		"updatePerson": &graphql.Field{
-			Description:       "update person by id",
-			Type:              personType,
+			Description: "update person by id",
+			Type:        personType,
 			Args: graphql.FieldConfigArgument{
 				"id": &graphql.ArgumentConfig{
-					Type:         graphql.NewNonNull(graphql.Int),
+					Type: graphql.NewNonNull(graphql.Int),
 				},
 				"name": &graphql.ArgumentConfig{
 					Type: graphql.String,
@@ -133,9 +133,9 @@ var mutationType = graphql.NewObject(graphql.ObjectConfig{
 			},
 		},
 		"deletePerson": &graphql.Field{
-			Description:       "delete person by id",
-			Type:              personType,
-			Args:              graphql.FieldConfigArgument{
+			Description: "delete person by id",
+			Type:        personType,
+			Args: graphql.FieldConfigArgument{
 				"id": &graphql.ArgumentConfig{
 					Type: graphql.NewNonNull(graphql.Int),
 				},
@@ -159,14 +159,14 @@ var mutationType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 var schema, _ = graphql.NewSchema(graphql.SchemaConfig{
-	Query:         queryType,
-	Mutation:     mutationType,
+	Query:    queryType,
+	Mutation: mutationType,
 })
 
 func executeQuery(query string, schema graphql.Schema) *graphql.Result {
 	result := graphql.Do(graphql.Params{
-		Schema:         schema,
-		RequestString:  query,
+		Schema:        schema,
+		RequestString: query,
 	})
 
 	if len(result.Errors) > 0 {
@@ -183,12 +183,3 @@ func main() {
 	fmt.Println("server is running on port: 8080")
 	http.ListenAndServe(":8080", nil)
 }
-
-// Create person:: http://localhost:8080/person?query=mutation+_{createPerson(name:"Sagor",age:26){id,name,age}}
-
-// Get single person by id:: http://localhost:8080/person?query={person(id:2388){id,name,age}}
-// Get all persons:: http://localhost:8080/person?query={allPersons{id,name,age}}
-
-// Update person info:: http://localhost:8080/person?query=mutation+_{updatePerson(id:2388,name:"sayf azad"){id,name,age}}
-
-// Delete person:: http://localhost:8080/person?query=mutation+_{deletePerson(id:2388){id,name,age}}
