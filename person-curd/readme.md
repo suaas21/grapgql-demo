@@ -14,7 +14,7 @@ To run the program:
 ## Read
 
 * Get person by id: `http://localhost:8080/person?query={person(id:<id>){id,name,age}}`
-* Get product list: `http://localhost:8080/person?query={allPersons{id,name,age}}`
+* Get person list: `http://localhost:8080/person?query={allPersons{id,name,age}}`
 
 ## Update
 
