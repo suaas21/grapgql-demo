@@ -1,27 +1,6 @@
-# github.com/gorilla/websocket v1.4.0
-github.com/gorilla/websocket
-# github.com/graph-gophers/graphql-go v1.2.0
+# github.com/graph-gophers/dataloader v5.0.0+incompatible
 ## explicit
-github.com/graph-gophers/graphql-go
-github.com/graph-gophers/graphql-go/decode
-github.com/graph-gophers/graphql-go/errors
-github.com/graph-gophers/graphql-go/internal/common
-github.com/graph-gophers/graphql-go/internal/exec
-github.com/graph-gophers/graphql-go/internal/exec/packer
-github.com/graph-gophers/graphql-go/internal/exec/resolvable
-github.com/graph-gophers/graphql-go/internal/exec/selected
-github.com/graph-gophers/graphql-go/internal/query
-github.com/graph-gophers/graphql-go/internal/schema
-github.com/graph-gophers/graphql-go/internal/validation
-github.com/graph-gophers/graphql-go/introspection
-github.com/graph-gophers/graphql-go/log
-github.com/graph-gophers/graphql-go/relay
-github.com/graph-gophers/graphql-go/trace
-github.com/graph-gophers/graphql-go/types
-# github.com/graph-gophers/graphql-transport-ws v0.0.1
-## explicit
-github.com/graph-gophers/graphql-transport-ws/graphqlws
-github.com/graph-gophers/graphql-transport-ws/graphqlws/internal/connection
+github.com/graph-gophers/dataloader
 # github.com/graphql-go/graphql v0.8.0
 ## explicit
 github.com/graphql-go/graphql
@@ -35,9 +14,9 @@ github.com/graphql-go/graphql/language/printer
 github.com/graphql-go/graphql/language/source
 github.com/graphql-go/graphql/language/typeInfo
 github.com/graphql-go/graphql/language/visitor
-# github.com/opentracing/opentracing-go v1.1.0
+# github.com/opentracing/opentracing-go v1.2.0
+## explicit
 github.com/opentracing/opentracing-go
-github.com/opentracing/opentracing-go/ext
 github.com/opentracing/opentracing-go/log
 # github.com/stretchr/testify v1.7.0
 ## explicit
